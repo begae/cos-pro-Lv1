@@ -1,0 +1,11 @@
+
+func solution(num: Int) -> Int {
+    var result: Int = num + 1
+    while String(result).contains("0") {
+        result += 1
+    }
+    return result
+}
+
+solution(num: 9949999) // 9951111
+
