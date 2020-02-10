@@ -1,0 +1,36 @@
+
+func solution(exp: String) -> Int {
+    let arr: Array<Character> = Array(exp)
+    var first: String = exp
+    var second: String = exp
+    var position: Int = 0
+    var result: Int = 0
+    if exp.contains("+") {
+        position = arr.firstIndex(of: "+")!
+    } else if exp.contains("-") {
+        position = arr.firstIndex(of: "-")!
+    } else if exp.contains("*") {
+        position = arr.firstIndex(of: "*")!
+    } else if exp.contains("/") {
+        position = arr.firstIndex(of: "/")!
+    }
+    while first.count > position {
+        first.removeLast()
+    }
+    while second.count >= exp.count-position {
+        second.removeFirst()
+    }
+    if exp.contains("+") {
+        result = Int(first)! + Int(second)!
+    } else if exp.contains("-") {
+        result = Int(first)! - Int(second)!
+    } else if exp.contains("*") {
+        result = Int(first)! * Int(second)!
+    } else if exp.contains("/") {
+        result = Int(first)! / Int(second)!
+    }
+    return result
+}
+
+solution(exp: "123+12") // 135
+
