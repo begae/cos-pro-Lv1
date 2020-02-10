@@ -1,0 +1,24 @@
+
+func solution(a: String, b: String) -> Int {
+    var arrA: Array<Character> = Array(a)
+    var arrB: Array<Character> = Array(b)
+    var count: Int = 0
+    if arrA.count > arrB.count {
+        while arrA.count >= arrB.count {
+            arrB.insert("0", at: 0)
+        }
+    } else if arrB.count > arrA.count {
+        while arrB.count >= arrA.count {
+            arrA.insert("0", at: 0)
+        }
+    }
+    for i in 0...a.count-1 {
+        if arrA[i] != arrB[i] {
+            count += 1
+        }
+    }
+    return count
+}
+
+solution(a: "10010", b: "110") // 2
+
