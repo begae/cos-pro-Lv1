@@ -1,0 +1,18 @@
+
+func solution(arrA: Array<Int>, arrB: Array<Int>) -> Array<Int> {
+    var joined: Array<Int> = arrA + arrB
+    var sorted: Array<Int> = []
+    for i in joined.min()!...joined.max()! {
+        if joined.contains(i) {
+            sorted.append(i)
+            joined.remove(at: joined.firstIndex(of: i)!)
+        }
+    }
+    for i in joined {
+        sorted.insert(i, at: sorted.firstIndex(of: i)!)
+    }
+    return sorted
+}
+
+solution(arrA: [-2,3,5,9], arrB: [0,1,5]) // [-2,0,1,3,5,5,9]
+
