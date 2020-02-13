@@ -1,0 +1,22 @@
+
+func solution(votes: Array<Int>, n: Int) -> Array<Int> {
+    var count: Array<Int> = Array(repeating: 0, count: n+1)
+    var selected: Array<Int> = []
+    for i in 0...votes.count-1 {
+        for j in 1...n {
+            if votes[i] == j {
+                count[j] += 1
+            }
+        }
+    }
+    for k in 0...count.count-1 {
+        if count[k] == count.max()! {
+            selected.append(k)
+        }
+    }
+    return selected
+}
+
+solution(votes: [1, 5, 4, 3, 2, 5, 2, 5, 5, 4], n: 5) // [5]
+solution(votes: [1, 3, 2, 3, 2], n: 4) // [2, 3]
+
