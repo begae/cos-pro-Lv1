@@ -1,8 +1,7 @@
 
 func solution(prices: Array<Int>) -> Int {
     var gap: Array<Int> = []
-    let len: Int = prices.count
-    for i in 1...len-1 {
+    for i in 1...prices.count-1 {
         for j in prices[..<i] {
             gap.append(prices[i]-j)
         }
