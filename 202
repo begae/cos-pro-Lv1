@@ -1,0 +1,28 @@
+
+func solution(times: Array<String>, current: String) -> Int {
+    let len: Int = times.count
+    var hours: Array<Int> = []
+    var possible: Array<Int> = []
+    for i in 0...len-1 {
+        hours.append(Int(String(times[i].prefix(2)))!)
+    }
+    for j in 0...len-1 {
+        hours[j] = hours[j] * 60
+        hours[j] += Int(String(times[j].suffix(2)))!
+    }
+    let now: Int = Int(current.prefix(2))! * 60 + Int(current.suffix(2))!
+    for k in 0...len-1 {
+        if hours[k] >= now {
+            possible.append(hours[k])
+        }
+    }
+    if possible.count == 0 {
+        return -1
+    } else {
+        return possible[0] - now
+    }
+}
+
+solution(times: ["05:31", "11:59", "13:30", "23:32"], current: "12:00") // 90
+solution(times: ["14:31", "15:31"], current: "15:31") // 0
+
