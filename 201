@@ -1,0 +1,15 @@
+
+func solution(nums: Array<Int>, ranks: Array<Int>) -> Array<Int> {
+    var sorted: Array<Int> = []
+    for i in 1...ranks.count {
+        for j in 0...ranks.count-1 {
+            if ranks[j] == i {
+                sorted.append(nums[j])
+            }
+        }
+    }
+    return sorted
+}
+
+solution(nums: [2,4,3,6,5], ranks: [3,5,1,2,4]) // [3, 6, 2, 5, 4]
+
