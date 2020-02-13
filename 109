@@ -1,0 +1,20 @@
+
+func solution(recA: Array<Int>, recB: Array<Int>) -> Int {
+    var posA: Int = 0
+    for i in 0...recA.count-1 {
+        let result: Array<Int> = [recA[i], recB[i]]
+        if result == [0, 2] || result == [1, 0] || result == [2, 1] {
+            posA += 3
+        } else if result == [2, 0] || result == [0, 1] || result == [1, 2] {
+            if posA > 0 {
+                posA -= 1
+            } else {
+                posA = 0
+            }
+        }
+    }
+    return posA
+}
+
+solution(recA: [2,0,0,0,0,0,1,1,0,0], recB: [0,0,0,0,2,2,0,2,2,2]) // 14
+
