@@ -1,0 +1,15 @@
+
+func solution(names: Array<String>, scores: Array<Int>, k: Int) -> String {
+    var sorted: Array<Int> = []
+    for i in scores {
+        for j in 0...100 {
+            if i == j {
+                sorted.insert(scores.firstIndex(of: i)!, at: 0)
+            }
+        }
+    }
+    return names[sorted[k-1]]
+}
+
+solution(names: ["lukas", "james", "levi", "eli", "max"], scores: [30,20,50,40,10], k: 2) // "eli"
+
