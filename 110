@@ -1,0 +1,17 @@
+
+func solution(prices: Array<Int>) -> Int {
+    var gap: Array<Int> = []
+    let len: Int = prices.count
+    for i in 1...len-1 {
+        for j in prices[..<i] {
+            gap.append(prices[i]-j)
+        }
+    }
+    return gap.max()!
+}
+
+solution(prices: [1,2,3]) // 2
+solution(prices: [3,1]) // -2
+solution(prices: [1,2,3,4,5,4,3,2,1]) // 4
+solution(prices: [5,4,3,2,1]) // -1
+
