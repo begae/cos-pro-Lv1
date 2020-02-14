@@ -1,7 +1,7 @@
 
 func solution(arr: Array<Int>) -> Int {
     var count: Int = 0
-    var counts: Array<Int> = []
+    var counts: Array<Int> = [0]
     for i in 0...arr.count-2 {
         if arr[i] < arr[i+1] {
             count += 1
