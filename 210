@@ -1,0 +1,16 @@
+
+func solution(str: String) -> String {
+    let arr: Array<Character> = Array(str)
+    var new: String = ""
+    for i in 0...arr.count-1 {
+        if new.last == "0" && arr[i] == "0" {
+            continue
+        } else {
+            new.append(arr[i])
+        }
+    }
+    return new
+}
+
+solution(str: "101100011100") // "101101110"
+
