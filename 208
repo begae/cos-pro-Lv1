@@ -1,0 +1,15 @@
+
+func solution(arr: Array<Int>) -> Array<Int> {
+    var given: Array<Int> = arr
+    var new: Array<Int> = []
+    while new.count < arr.count {
+        new.append(given.first!)
+        given.removeFirst()
+        new.append(given.last!)
+        given.removeLast()
+    }
+    return new
+}
+
+solution(arr: [1,2,3,4,5,6]) // [1,6,2,5,3,4]
+
