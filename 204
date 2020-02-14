@@ -1,0 +1,17 @@
+
+func solution(arr: Array<Int>, k: Int) -> Int {
+    var combi: [Set<Int>] = []
+    for i in arr {
+        for j in arr {
+            for h in arr {
+                if i != j && j != h && h != i && (i + j + h) % k == 0 && combi.contains([i, j, h]) == false {
+                    combi.append([i, j, h])
+                }
+            }
+        }
+    }
+    return combi.count
+}
+
+solution(arr: [1,2,3,4,5], k: 3) // 4
+
