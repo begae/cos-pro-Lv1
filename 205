@@ -1,18 +1,19 @@
 
 func solution(arr: Array<Int>) -> Int {
-    var count: Int = 0
-    var counts: Array<Int> = [0]
-    for i in 0...arr.count-2 {
-        if arr[i] < arr[i+1] {
+    var count: Int = 1
+    var counts: Array<Int> = [1]
+    for i in 1...arr.count-1 {
+        if arr[i-1] < arr[i] {
             count += 1
         } else {
-            count += 1
             counts.append(count)
-            count = 0
+            count = 1
         }
     }
+    counts.append(count)
     return counts.max()!
 }
 
 solution(arr: [3, 1, 2, 4, 5, 1, 2, 2, 3, 4]) // 4
+solution(arr: [1,2,3,4,3,2,1,2,3,4,5]) // 5
 
