@@ -1,0 +1,28 @@
+
+import Foundation
+
+func solution(password: String) -> Bool {
+    var check: Bool = true
+    var pass: String = ""
+    let alpha: String = "abcdefghijklmnopqrstuvwxyz"
+    let alphaRev = String(alpha.reversed())
+    let num: String = "0123456789"
+    let numRev = String(num.reversed())
+    let arr: Array<Character> = Array(password)
+    for i in 0...arr.count-3 {
+        pass.append(arr[i])
+        pass.append(arr[i+1])
+        pass.append(arr[i+2])
+        if alpha.contains(pass) || alphaRev.contains(pass) || num.contains(pass) || numRev.contains(pass) {
+            check = false
+        } else {
+            pass = ""
+            continue
+        }
+    }
+    return check
+}
+
+solution(password: "cospro890") // true
+solution(password: "cba323") // false
+
