@@ -1,0 +1,15 @@
+
+func solution(money: Int) -> Int {
+    var change: Int = money
+    var count: Int = 0
+    for i in [50000, 10000, 5000, 1000, 500, 100, 50, 10] {
+        if change / i != 0 {
+            count += change / i
+            change -= change / i * i
+        }
+    }
+    return count
+}
+
+solution(money: 2760) // 7
+
