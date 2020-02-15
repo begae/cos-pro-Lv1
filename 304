@@ -1,0 +1,19 @@
+
+func solution(s1: String, s2: String) -> Int {
+    let count: Int = (s1 + s2).count
+    let short: Int = s1.count < s2.count ? s1.count : s2.count
+    var len: Array<Int> = []
+    for i in 0...short-1 {
+        if s1.suffix(i) == s2.prefix(i) {
+            len.append(count - i)
+        } else if s2.suffix(i) == s1.prefix(i) {
+            len.append(count - i)
+        } else {
+            continue
+        }
+    }
+    return len.min()!
+}
+
+solution(s1: "ababc", s2: "abcdab") // 8
+
