@@ -1,0 +1,20 @@
+
+func solution(students: Array<Int>, k: Int) -> Int {
+    var left: Int = 0
+    var need: Int = 0
+    for i in 0...students.count-1 {
+        left = (students[i] - k * 4)
+        if left > 0 {
+            if left % k == 0 {
+                need += left / k
+            } else {
+                need += left / k + 1
+            }
+        }
+    }
+    return need
+}
+
+solution(students: [4,4,4,4], k: 1) // 0
+solution(students: [15,17,19,10,23], k: 3) // 10
+
