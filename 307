@@ -1,0 +1,19 @@
+
+func solution(n: Int) -> Array<Int> {
+    var caprica: Array<Int> = []
+    for i in 4...n {
+        let square: String = String(i * i)
+        for j in 1...square.count-1 {
+            let k: Int = square.count - j
+            let front: Int = Int(square.prefix(j))!
+            let end: Int = Int(square.suffix(k))!
+            if front + end == i && front > 0 && end > 0 {
+                caprica.append(i)
+            }
+        }
+    }
+    return caprica
+}
+
+solution(n: 500) // [9, 45, 55, 99, 297]
+
