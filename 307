@@ -5,10 +5,10 @@ func solution(n: Int) -> Array<Int> {
         let square: String = String(i * i)
         for j in 1...square.count-1 {
             let k: Int = square.count - j
-            let front: Int = Int(square.prefix(j))!
-            let end: Int = Int(square.suffix(k))!
-            if front + end == i && front > 0 && end > 0 {
-                caprica.append(i)
+            if Int(square.prefix(j))! + Int(square.suffix(k))! == i {
+                if Int(square.suffix(k))! > 0 && Int(square.prefix(j))! > 0 {
+                    caprica.append(i)
+                }
             }
         }
     }
