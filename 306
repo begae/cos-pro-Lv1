@@ -1,0 +1,34 @@
+
+func solution(n: Int) -> Int {
+    func isPrime(num: Int) -> Bool {
+        var prime: Bool = true
+        for i in 2...(num-1) {
+            if num % i == 0 {
+                prime = false
+                break
+            }
+        }
+        return prime
+    }
+    var primeNum: Array<Int> = [2]
+    for j in 3...n {
+        if isPrime(num: j) == true {
+            primeNum.append(j)
+        }
+    }
+    var combi: [Set<Int>] = []
+    for p in primeNum {
+        for q in primeNum {
+            for r in primeNum {
+                if p + q + r == n && p != q && q != r && r != p && combi.contains([p, q, r]) == false {
+                    combi.append([p, q, r])
+                }
+            }
+        }
+    }
+    return combi.count
+}
+
+solution(n: 33) // 4
+solution(n: 9) // 0
+
