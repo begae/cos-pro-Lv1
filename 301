@@ -1,0 +1,21 @@
+
+func solution(arrA: Array<Int>, arrB: Array<Int>) -> Bool {
+    var check: Bool = false
+    if arrA.count == arrB.count {
+        var extended = arrA + arrA
+            while extended.first != arrB.first {
+                extended.removeFirst()
+            }
+            while extended.last != arrB.last {
+                extended.removeLast()
+            }
+            if extended == arrB {
+                check = true
+        }
+    }
+    return check
+}
+
+solution(arrA: [1,2,3,4], arrB: [3,4,1,2]) // true
+solution(arrA: [1,2,3,4], arrB: [1,4,2,3]) // false
+
