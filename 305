@@ -1,0 +1,14 @@
+
+func solution(phrase: String, sec: Int) -> String {
+    var str: String = "______________" + phrase
+    var count: Int = 0
+    while count < sec%28 {
+        str.removeFirst()
+        str.append("_")
+        count += 1
+    }
+    return String(str.prefix(14))
+}
+
+solution(phrase: "happy", sec: 6) // "________happy_"
+
