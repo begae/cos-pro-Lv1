@@ -1,0 +1,18 @@
+
+func solution(revenue: Array<Int>, k: Int) -> Int {
+    var sum: Int = 0
+    var sums: Array<Int> = []
+    for i in 0...revenue.count-k {
+        let slice = revenue[i...i+k-1]
+        for j in slice {
+            sum += j
+        }
+        sums.append(sum)
+        sum = 0
+    }
+    return sums.max()!
+}
+
+solution(revenue: [1, 1, 9, 3, 7, 6, 5, 10], k: 4) // 28
+solution(revenue: [1, 1, 5, 1, 1], k: 1) // 5
+
