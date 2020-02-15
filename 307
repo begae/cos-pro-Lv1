@@ -1,18 +1,18 @@
 
 func solution(n: Int) -> Array<Int> {
-    var caprica: Array<Int> = []
+    var kaprika: Array<Int> = []
     for i in 4...n {
         let square: String = String(i * i)
         for j in 1...square.count-1 {
             let k: Int = square.count - j
             if Int(square.prefix(j))! + Int(square.suffix(k))! == i {
                 if Int(square.suffix(k))! > 0 && Int(square.prefix(j))! > 0 {
-                    caprica.append(i)
+                    kaprika.append(i)
                 }
             }
         }
     }
-    return caprica
+    return kaprika
 }
 
 solution(n: 500) // [9, 45, 55, 99, 297]
