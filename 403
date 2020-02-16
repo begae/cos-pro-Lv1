@@ -1,0 +1,13 @@
+
+func solution(one: Int, days: Int, multi: Int, n: Int) -> Int {
+    var sum1: Int = 0
+    var sum2: Int = 0
+    sum1 += n * one
+    sum2 += n / days * multi
+    sum2 += n % days * one
+    return sum1 < sum2 ? sum1 : sum2
+}
+
+solution(one: 3, days: 5, multi: 14, n: 6) // 17
+solution(one: 2, days: 3, multi: 5, n: 11) // 19
+
