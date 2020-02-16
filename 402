@@ -1,0 +1,22 @@
+
+func solution(s: String) -> String {
+    let str: String = s.lowercased()
+    let arr: Array<Character> = Array(str)
+    var count: Int = 0
+    var new: Array<String> = []
+    for i in 0...arr.count-2 {
+        if arr[i] == arr[i+1] {
+            count += 1
+        } else {
+            new.append(String(arr[i]))
+            new.append(String(count + 1))
+            count = 0
+        }
+    }
+    new.append(String(arr.last!))
+    new.append(String(count + 1))
+    return new.joined()
+}
+
+solution(s: "YYYYYbbbBbbBBBMmmM") // "y5b9m4"
+
