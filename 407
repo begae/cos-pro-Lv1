@@ -1,0 +1,12 @@
+
+func solution(x1: Int, y1: Int, x2: Int, y2: Int, x: Int, y: Int) -> Int {
+    var point: Array<Int> = [x2, y2]
+    let width1: Int = (x2 - x1) * (y2 - y1)
+    point[0] += x
+    point[1] += y
+    let width2: Int = (point[0] - x1) * (point[1] - y1)
+    return width2 - width1
+}
+
+solution(x1: 1, y1: 1, x2: 5, y2: 5, x: 2, y: 1) // 14
+
