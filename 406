@@ -1,0 +1,26 @@
+
+import Foundation
+
+func solution(k: Int) ->  Array<Int> {
+    var narcissistic: Array<Int> = []
+    let start: Int = Int(pow(10.0, Double(k-1)))
+    let end: Int = Int(pow(10.0, Double(k)))
+    for i in start...end {
+        let str: String = String(i)
+        let arr = str.compactMap{ $0.wholeNumberValue }
+        var sum: Int = 0
+        for j in 0...arr.count-1 {
+            sum += Int(pow(Double(arr[j]), Double(k)))
+        }
+        if sum == i {
+            narcissistic.append(i)
+            sum = 0
+        } else {
+            sum = 0
+        }
+    }
+    return narcissistic
+}
+
+solution(k: 3) // [153, 370, 371, 407]
+
