@@ -1,0 +1,25 @@
+
+func solution(num: Int) -> String {
+    let str: String = String(num)
+    let arr: Array<Int> = str.compactMap{ $0.wholeNumberValue }
+    var counts: Array<Int> = Array(repeating: 0, count: 10)
+    for i in 0...9 {
+        for j in 0...arr.count-1 {
+            if arr[j] == i {
+                counts[i] += 1
+            }
+        }
+    }
+    var new: String = ""
+    for k in 0...9 {
+        if counts[k] != 0 {
+            new.append(String(counts[k]))
+            new.append(String(k))
+        }
+    }
+    return String(new.reversed())
+}
+
+solution(num: 2433) // "413221"
+solution(num: 662244) // "624222"
+
