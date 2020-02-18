@@ -1,0 +1,12 @@
+
+func solution(hour: Int, min: Int) -> Double {
+    let one: Int = hour % 12
+    let two: Double = Double(one) * 30.0 + 0.5 * Double(min)
+    let three: Double = 6.0 * Double(min)
+    let four: Double = two > three ? two : three
+    let five: Double = two < three ? two : three
+    return four - five
+}
+
+solution(hour: 3, min: 0) // 90.0
+
