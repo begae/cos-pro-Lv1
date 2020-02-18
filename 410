@@ -1,0 +1,41 @@
+
+import Foundation
+
+func solution(a: Int, b: Int) -> Int {
+    var powers: Array<Int> = []
+    if a < 4 && b > 4 {
+        powers.append(4)
+    }
+    if a < 8 && b > 8 {
+        powers.append(8)
+    }
+    func check(num: Int) -> Bool {
+        var isPrime: Bool = true
+        for i in 2...num-1 {
+            if num % i == 0 {
+                isPrime = false
+                break
+            }
+        }
+        return isPrime
+    }
+    for j in 3...b {
+       if check(num: j) == true {
+            let square: Int = Int(pow(Double(j), 2.0))
+            let cube: Int = Int(pow(Double(j), 3.0))
+            if square > a && square < b {
+                powers.append(square)
+            }
+            if cube > a && cube < b {
+                powers.append(cube)
+            }
+            if square > b {
+                break
+            }
+        }
+    }
+    return powers.count
+}
+
+solution(a: 6, b: 30) // 4
+
