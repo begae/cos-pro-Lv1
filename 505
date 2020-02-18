@@ -1,0 +1,21 @@
+
+func solution(enemy: Array<Int>, army: Array<Int>) -> Int {
+    var enemies: Array<Int> = enemy.sorted()
+    var armies: Array<Int> = army.sorted()
+    var count: Int = 0
+    while enemies.count != 0 && armies.count != 0 {
+        if armies.first! >= enemies.first! {
+            armies.removeFirst()
+            enemies.removeFirst()
+            count += 1
+        } else {
+            armies.removeFirst()
+        }
+    }
+    return count
+}
+
+solution(enemy: [1,4,3], army: [1,3]) // 2
+solution(enemy: [1,1,1], army: [1,2,3,4]) // 3
+solution(enemy: [1,2,3,4], army: [1,1,1]) // 1
+
