@@ -1,0 +1,18 @@
+
+func solution(nums: Array<Int>) -> Array<Int> {
+    var sorted: Array<Int> = []
+    for i in nums.min()!...nums.max()! {
+        if nums.contains(i) {
+            sorted.append(i)
+        }
+    }
+    let middle: Int = (nums.count+1)/2 - 2
+    let middle2: Int = middle + 1
+    var slice1 = sorted[...middle]
+    var slice2 = sorted[middle2...]
+    slice2.reverse()
+    return Array(slice1) + Array(slice2)
+}
+
+solution(nums: [7,3,4,1,2,5,6]) // [1,2,3,7,6,5,4]
+
