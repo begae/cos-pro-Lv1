@@ -1,0 +1,26 @@
+
+func solution(k: Int, words: Array<String>) -> Int {
+    var written: Array<String> = []
+    var remainig: Int = k
+    var lines: Int = 0
+    for i in 0...words.count-2 {
+        written.append(words[i])
+        remainig -= words[i].count + 1
+        if remainig >= words[i+1].count {
+            continue
+        } else {
+            lines += 1
+            remainig = k
+        }
+    }
+    if remainig >= words.last!.count {
+        written.append(words.last!)
+        lines += 1
+    } else {
+        lines += 1
+    }
+    return lines
+}
+
+solution(k: 10, words: ["nice", "happy", "hello", "world", "hi", "myamya", "we"]) // 4
+
