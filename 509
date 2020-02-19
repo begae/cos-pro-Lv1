@@ -1,0 +1,22 @@
+
+func solution(num: Int, target: Int) -> Int {
+    var number: Int = num
+    var count: Int = 0
+    while number != target {
+        if target / number >= 1 {
+            number =  number * 2
+            count += 1
+        } else if target > number {
+            number += 1
+            count += 1
+        } else if target < number {
+            number -= 1
+            count += 1
+        }
+    }
+    return count
+}
+
+solution(num: 5, target: 9) // 2
+solution(num: 3, target: 11) // 3
+
