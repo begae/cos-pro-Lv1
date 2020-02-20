@@ -8,7 +8,8 @@ func solution(grid: [[Int]]) -> Int {
                 if j != k {
                     value = grid[i][j] + grid[i][k]
                     values.append(value)
-                } else if i != j {
+                }
+                if i != j {
                     value = grid[i][k] + grid[j][k]
                     values.append(value)
                 }
