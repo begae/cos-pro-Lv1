@@ -1,0 +1,22 @@
+
+func solution(grid: [[Int]]) -> Int {
+    var value: Int = 0
+    var values: Array<Int> = []
+    for i in 0...grid.count-1 {
+        for j in 0...grid.count-1 {
+            for k in 0...grid.count-1 {
+                if j != k {
+                    value = grid[i][j] + grid[i][k]
+                    values.append(value)
+                } else if i != j {
+                    value = grid[i][k] + grid[j][k]
+                    values.append(value)
+                }
+            }
+        }
+    }
+    return values.max()!
+}
+
+solution(grid: [[1, 4, 16, 1], [20, 5, 15, 8], [6, 13, 36, 14], [20, 7, 19, 15]]) // 55
+
