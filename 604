@@ -1,0 +1,24 @@
+
+func solution(n: Int, mix: Int, k: Int) -> Int {
+    var count: Int = 0
+    let initial: Array<Int> = Array(1...n)
+    var stack1 = initial[0...n/2-1]
+    var stack2 = initial[n/2...n-1]
+    var result: Int = 0
+    while count < mix {
+        for i in 1...n {
+            if i % 2 == 1 {
+                stack1.insert(stack2.first!, at: i)
+                stack2.removeFirst()
+            }
+        }
+        count += 1
+        result = stack1[k-1]
+        stack2 = stack1[n/2...n-1]
+        stack1 = stack1[0...n/2-1]
+    }
+    return result
+}
+
+solution(n: 6, mix: 3, k: 3) // 5
+
