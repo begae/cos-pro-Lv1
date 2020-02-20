@@ -1,0 +1,17 @@
+
+func solution(arr: Array<Int>, k: Int) -> Int {
+    var picked: Array<Int> = []
+    var gaps: Array<Int> = []
+    for i in 0...arr.count-4 {
+        for j in 3...arr.count-1 {
+            picked = Array(arr.sorted()[i...j])
+            if picked.count == k {
+                gaps.append(picked.max()!-picked.min()!)
+            }
+        }
+    }
+    return gaps.min()!
+}
+
+solution(arr: [9,11,9,6,4,19], k: 4) // 5
+
