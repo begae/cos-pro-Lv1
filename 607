@@ -1,0 +1,27 @@
+
+func solution(k: Int, numbers: Array<Int>, feedbacks: Array<String>) -> Int {
+    var candidates: Array<Int> = Array(1...k)
+    for i in 0...numbers.count-1 {
+        if feedbacks[i] == "UP" {
+            if candidates.contains(numbers[i]) {
+                while candidates.first! != numbers[i] + 1 {
+                    candidates.removeFirst()
+                }
+            }
+        } else if feedbacks[i] == "DOWN" {
+            if candidates.contains(numbers[i]) {
+                while candidates.last! != numbers[i] - 1 {
+                    candidates.removeLast()
+                }
+            }
+        } else if feedbacks[i] == "RIGHT" {
+            candidates = [numbers[i]]
+        }
+    }
+    return candidates.count
+}
+
+solution(k: 10, numbers: [4,9,6], feedbacks: ["UP", "DOWN", "UP"]) // 2
+solution(k: 10, numbers: [2,1,6], feedbacks: ["UP", "UP", "DOWN"]) // 3
+solution(k: 100, numbers: [97,98], feedbacks: ["UP", "RIGHT"]) // 1
+
