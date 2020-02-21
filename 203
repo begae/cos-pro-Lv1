@@ -1,0 +1,43 @@
+
+func solution(num: Int) -> Int {
+    func checkDigits(num: Int) -> Bool {
+        if String(num).count % 2 == 1 {
+            return false
+        } else {
+            return true
+        }
+    }
+    func checkSums(num: Int) -> Bool {
+        let str: String = String(num)
+        let digits = str.compactMap{ $0.wholeNumberValue }
+        var front: Int = 0
+        var end: Int = 0
+        for i in 0...str.count/2-1 {
+            front += digits[i]
+        }
+        for j in str.count/2...str.count-1 {
+            end += digits[j]
+        }
+        if front == end {
+            return true
+        } else  {
+            return false
+        }
+    }
+    var number: Int = num
+    while checkDigits(num: number) == false {
+        number += 1
+    }
+    while checkDigits(num: number) == true {
+        if checkSums(num: number) == false {
+            number += 1
+        } else {
+            break
+        }
+    }
+    return number - num
+}
+
+solution(num: 1) // 10
+solution(num: 235386) // 20
+
