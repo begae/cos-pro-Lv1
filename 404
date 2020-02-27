@@ -1,0 +1,68 @@
+
+func solution(matrix: [[Int]]) -> Array<Int> {
+    var hole: Array<Int> = []
+    var missing: Array<Int> = []
+    var fixed: [[Int]] = matrix
+    for i in 1...16 {
+        if matrix.joined().contains(i) == false {
+            missing.append(i)
+        }
+    }
+    for i in 0...3 {
+        for j in 0...3 {
+            if matrix[i][j] == 0 {
+                hole.append(i)
+                hole.append(j)
+            }
+        }
+    }
+    fixed[hole[0]][hole[1]] = missing[0]
+    fixed[hole[2]][hole[3]] = missing[1]
+    hole.insert(missing[0], at: 2)
+    hole.insert(missing[1], at: 5)
+    func check(arr: [[Int]]) -> Bool {
+        var result: Bool = true
+        var sums: Array<Int> = []
+        var sum1: Int = 0
+        var sum2: Int = 0
+        var sum3: Int = 0
+        var sum4: Int = 0
+        for i in 0...3 {
+            for j in 0...3 {
+                sum1 += arr[i][j]
+                sum2 += arr[j][i]
+            }
+            sum3 += arr[i][i]
+            sum4 += arr[i][3-i]
+            sums.append(sum1)
+            sums.append(sum2)
+            sum1 = 0
+            sum2 = 0
+        }
+        sums.append(sum3)
+        sums.append(sum4)
+        for i in 1...9 {
+            if sums[i] != sums[i-1] {
+                result = false
+            }
+        }
+        return result
+    }
+    if check(arr: fixed) == false {
+        fixed[hole[0]][hole[1]] = missing[1]
+        fixed[hole[3]][hole[4]] = missing[0]
+        hole[2] = missing[1]
+        hole[5] = missing[0]
+        if check(arr: fixed) == false {
+            print("WRONG MATRIX")
+        }
+    }
+    hole[0] += 1
+    hole[1] += 1
+    hole[3] += 1
+    hole[4] += 1
+    return hole
+}
+
+solution(matrix: [[16,2,3,13],[5,11,10,0],[9,7,6,12],[0,14,15,1]]) // [2,4,8,4,1,4]
+
