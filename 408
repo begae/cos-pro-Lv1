@@ -3,14 +3,8 @@ func solution(card: Array<Int>, n: Int) -> Int {
     var cards: Array<Int> = card
     cards.sort()
     var start: String = ""
-    var end: String = ""
-    var combi: Array<String> = []
     for i in 0...cards.count-1 {
         start.append(String(cards[i]))
-    }
-    cards.reverse()
-    for i in 0...cards.count-1 {
-        end.append(String(cards[i]))
     }
     func check(num: Int) -> Bool {
         let str: String = String(num)
@@ -27,6 +21,7 @@ func solution(card: Array<Int>, n: Int) -> Int {
         cards = card
         return result
     }
+    var combi: Array<String> = []
     if check(num: n) == true {
         for i in Int(start)!...n {
             if check(num: i) == true {
