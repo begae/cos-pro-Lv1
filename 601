@@ -1,0 +1,26 @@
+
+func solution(n: Int, garden: [[Int]]) -> Int {
+    var before: [[Int]] = garden
+    var after: [[Int]] = garden
+    var days: Int = 0
+    while Array(after.joined()).contains(0) {
+        for i in 0...n-1 {
+            for j in 0...n-1 {
+                if before[i][j] == 1 {
+                    if j+1 <= n-1 { after[i][j+1] = 1 }
+                    if j-1 >= 0 { after[i][j-1] = 1 }
+                    if i+1 <= n-1 { after[i+1][j] = 1 }
+                    if i-1 >= 0 { after[i-1][j] = 1 }
+                }
+            }
+        }
+        days += 1
+        before = after
+    }
+    return days
+}
+
+solution(n: 3, garden: [[0,0,0], [0,1,0], [0,0,0]]) // 2
+solution(n: 2, garden: [[1,1], [1,1]]) // 0
+solution(n: 5, garden: [[0,0,0,0,0], [0,0,0,0,0], [0,0,1,0,0], [0,0,0,0,0], [0,0,0,0,0]]) // 4
+
