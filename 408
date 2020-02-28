@@ -1,0 +1,44 @@
+
+func solution(card: Array<Int>, n: Int) -> Int {
+    var cards: Array<Int> = card
+    cards.sort()
+    var start: String = ""
+    var end: String = ""
+    var combi: Array<String> = []
+    for i in 0...cards.count-1 {
+        start.append(String(cards[i]))
+    }
+    cards.reverse()
+    for i in 0...cards.count-1 {
+        end.append(String(cards[i]))
+    }
+    func check(num: Int) -> Bool {
+        let str: String = String(num)
+        let arr = str.compactMap{ $0.wholeNumberValue }
+        var result: Bool = true
+        for i in 0...arr.count-1 {
+            if cards.contains(arr[i]) {
+                cards.remove(at: cards.firstIndex(of: arr[i])!)
+            } else {
+                result = false
+                break
+            }
+        }
+        cards = card
+        return result
+    }
+    if check(num: n) == true {
+        for i in Int(start)!...n {
+            if check(num: i) == true {
+                combi.append(String(i))
+            }
+        }
+        return combi.count
+    } else {
+        return -1
+    }
+}
+
+solution(card: [1, 2, 1, 3], n: 1312) // 5
+solution(card: [1, 1, 1, 2], n: 1122) // -1
+
