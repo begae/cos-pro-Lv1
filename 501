@@ -1,0 +1,47 @@
+
+func solution(n: Int) -> Int {
+    
+    var combi: Array<String> = []
+    
+    for i in 0...n {
+        for j in 0...n/2 {
+            for k in 0...n/3 {
+                if i + 2*j + 3*k == n {
+                    let one: Array<Int> = Array(repeating: 1, count: i)
+                    let two: Array<Int> = Array(repeating: 2, count: j)
+                    let three: Array<Int> = Array(repeating: 3, count: k)
+                    var arr: Array<Int> = one + two + three
+                   
+                    arr.sort()
+                    var str1: String = ""
+                    for p in 0...arr.count-1 {
+                        str1.append(String(arr[p]))
+                    }
+                    
+                    arr.reverse()
+                    var str2: String = ""
+                    for q in 0...arr.count-1 {
+                        str2.append(String(arr[q]))
+                    }
+                    
+                    for r in Int(str1)!...Int(str2)! {
+                        let digits = String(r).compactMap{ $0.wholeNumberValue }
+                        var sum: Int = 0
+                        for i in 0...digits.count-1 {
+                            sum += digits[i]
+                        }
+                        if sum == n && combi.contains(String(r)) == false && String(r).contains("0") == false {
+                            combi.append(String(r))
+                        }
+                        sum = 0
+                    }
+                }
+            }
+        }
+    }
+    return combi.count
+}
+
+solution(n: 3) // 4
+solution(n: 4) // 7
+
