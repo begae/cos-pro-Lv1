@@ -1,0 +1,23 @@
+
+func solution(board: [[Int]]) -> Int {
+    let coins: Array<Int> = Array(board.joined())
+    var sum: Int = coins[0]
+    var sums: Array<Int> = []
+    var pos: Int = 0
+    for i in 111444...444111 {
+        if String(i).sorted() == ["1","1","1","4","4","4"] {
+            let move = String(i).compactMap{ $0.wholeNumberValue }
+            for j in 0...move.count-1 {
+                sum += coins[pos+move[j]]
+                pos += move[j]
+            }
+            sums.append(sum)
+            sum = coins[0]
+            pos = 0
+        }
+    }
+    return sums.max()!
+}
+
+solution(board: [[6, 7, 1, 2], [3, 5, 3, 9], [6, 4, 5, 2], [7, 3, 2, 6]]) // 38
+
